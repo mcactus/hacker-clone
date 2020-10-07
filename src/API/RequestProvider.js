@@ -19,6 +19,10 @@ class RequestProvider {
     return this.runRequest('GET', '', 'search?tags=front_page');
   }
 
+  static getArticlePage(id) {
+    return this.runRequest('GET', '', 'items/' + id);
+  }
+
   static createResource(data) {
     return this.runRequest('POST', data);
   }

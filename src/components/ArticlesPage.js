@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import RequestProvider from '../API/RequestProvider';
-import {Link} from 'react-router-dom';
-
-
+import { Link } from 'react-router-dom';
 
 const ArticlesPage = () => {
-  const [articles, setArticles] = useState([]);
+  const [ articles, setArticles ] = useState([]);
   useEffect(() => {
     const getArticles = async () => {
         const { hits } = await RequestProvider.getHomePage();
@@ -16,7 +14,6 @@ const ArticlesPage = () => {
   }, []);
 
   return (
-    <main className='container'>
       <div className='row row-cols-1 row-cols-lg-3 g-4'>
         {articles.map(({ objectID, url, title, author, points, num_comments }) => {
           const articleSource = url ? (
@@ -51,7 +48,6 @@ const ArticlesPage = () => {
           );
         })}
       </div>
-    </main>
   );
 }
 
