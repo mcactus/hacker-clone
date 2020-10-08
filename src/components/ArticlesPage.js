@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import RequestProvider from '../API/RequestProvider';
 import { Link } from 'react-router-dom';
+
+import RequestProvider from '../API/RequestProvider';
+import SourceLink from './utils/SourceLink';
 
 const ArticlesPage = () => {
   const [ articles, setArticles ] = useState([]);
@@ -16,14 +18,7 @@ const ArticlesPage = () => {
   return (
       <div className='row row-cols-1 row-cols-lg-3 g-4'>
         {articles.map(({ objectID, url, title, author, points, num_comments }) => {
-          const articleSource = url ? (
-            <a
-              href={url}
-              target='_blank'
-              className='d-inline mr-2 link-light text-uppercase'
-              title='Read on source'>
-              Read on source
-            </a>) : '';
+          
           return (
             <div className='col' key={objectID}>
               <div className='card bg-dark text-light h-100'>
@@ -41,7 +36,7 @@ const ArticlesPage = () => {
                     title='Comments'>
                     Comments ({num_comments})
                   </Link>
-                  {articleSource}
+                  <SourceLink url={url} />
                 </div>
               </div>
             </div>
